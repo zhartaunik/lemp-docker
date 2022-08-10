@@ -1,7 +1,8 @@
 version: '3'
 services:
   php:
-    image: php:8.1-fpm
+    build:
+      context: ./docker/php
     volumes:
       - './src:/var/www/html'
 
@@ -17,3 +18,5 @@ services:
     image: mysql:8
     environment:
       - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - './docker/volume/mysql:/var/lib/mysql'
